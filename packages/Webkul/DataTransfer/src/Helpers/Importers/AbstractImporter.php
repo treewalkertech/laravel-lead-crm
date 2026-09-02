@@ -245,6 +245,25 @@ abstract class AbstractImporter
          * Add Columns Errors.
          */
         foreach ($errors as $errorCode => $error) {
+            /**
+             * An unrecognized column header (e.g. a typo) is otherwise reported with just the bad
+             * column name, leaving the uploader to guess what was actually expected. Appending the
+             * accepted column names turns it into an actionable message.
+             */
+            if ($errorCode === self::ERROR_CODE_INVALID_ATTRIBUTE) {
+                $badColumns = implode('", "', $error);
+
+                $message = sprintf(
+                    trans($this->errorMessages[self::ERROR_CODE_INVALID_ATTRIBUTE]).' Accepted columns are: %s.',
+                    $badColumns,
+                    implode(', ', $this->getValidColumnNames())
+                );
+
+                $this->errorHelper->addError($errorCode, null, $badColumns, $message);
+
+                continue;
+            }
+
             $this->addErrors($errorCode, $error);
         }
 

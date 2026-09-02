@@ -1548,6 +1548,7 @@ return [
                     'validation' => [
                         'errors' => [
                             'id-not-found' => 'ID : \'%s\' not found in the system.',
+                            'person-identification-missing' => 'Provide either a \'person_id\' or a \'person_name\' so the lead\'s contact can be identified or created.',
                         ],
                     ],
                 ],
