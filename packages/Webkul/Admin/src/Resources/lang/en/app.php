@@ -619,10 +619,17 @@ return [
             'create' => [
                 'title' => 'Create Organization',
                 'save-btn' => 'Save Organization',
+                'contacts-title' => 'Contacts',
+                'contacts-info' => 'Add the people who work at this organization.',
+                'contact-name' => 'Name',
+                'contact-email' => 'Email',
+                'contact-phone' => 'Phone',
+                'add-contact' => 'Add Contact',
             ],
             'edit' => [
                 'title' => 'Edit Organization',
                 'save-btn' => 'Save Organization',
+                'existing-contacts' => 'Existing Contacts',
             ],
         ],
     ],

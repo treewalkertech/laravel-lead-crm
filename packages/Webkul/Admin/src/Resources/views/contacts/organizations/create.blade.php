@@ -67,8 +67,18 @@
 
                 {!! view_render_event('admin.contacts.organizations.edit.form_controls.after') !!}
             </div>
+
+            <div class="box-shadow rounded-lg border border-gray-300 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+                {!! view_render_event('admin.contacts.organizations.create.contacts.before') !!}
+
+                <v-organization-contacts></v-organization-contacts>
+
+                {!! view_render_event('admin.contacts.organizations.create.contacts.after') !!}
+            </div>
         </div>
     </x-admin::form>
 
     {!! view_render_event('admin.organizations.create.form.after') !!}
+
+    @include('admin::contacts.organizations.contacts')
 </x-admin::layouts>

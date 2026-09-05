@@ -66,11 +66,42 @@
                     :entity="$organization"
                     :can-add-new="false"
                 />
-                
+
                 {!! view_render_event('admin.contacts.organizations.edit.form_controls.after') !!}
+            </div>
+
+            <div class="box-shadow rounded-lg border border-gray-300 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+                {!! view_render_event('admin.contacts.organizations.edit.contacts.before', ['organization' => $organization]) !!}
+
+                @if ($organization->persons->isNotEmpty())
+                    <div class="mb-4 flex flex-col gap-2">
+                        <p class="text-base font-semibold text-gray-800 dark:text-white">
+                            @lang('admin::app.contacts.organizations.edit.existing-contacts')
+                        </p>
+
+                        <div class="flex flex-col divide-y divide-gray-100 rounded-lg border border-gray-300 dark:divide-gray-800 dark:border-gray-800">
+                            @foreach ($organization->persons as $person)
+                                <a
+                                    href="{{ route('admin.contacts.persons.edit', $person->id) }}"
+                                    class="flex items-center justify-between gap-2 px-4 py-2.5 text-sm text-gray-800 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
+                                >
+                                    <span>{{ $person->name }}</span>
+
+                                    <span class="text-gray-500">{{ $person->emails[0]['value'] ?? '' }}</span>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                <v-organization-contacts></v-organization-contacts>
+
+                {!! view_render_event('admin.contacts.organizations.edit.contacts.after', ['organization' => $organization]) !!}
             </div>
         </div>
     </x-admin::form>
 
     {!! view_render_event('admin.organizations.edit.form.after') !!}
+
+    @include('admin::contacts.organizations.contacts')
 </x-admin::layouts>
