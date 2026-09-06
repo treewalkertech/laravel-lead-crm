@@ -462,3 +462,21 @@ Breadcrumbs::for('dashboard.account.edit', function (BreadcrumbTrail $trail, $us
     $trail->parent('dashboard');
     $trail->push(trans('admin::app.account.edit.title'), route('admin.user.account.edit', $user->id));
 });
+
+// Dashboard > Prospects
+Breadcrumbs::for('prospects', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push(menu()->getLabel('prospects', 'admin::app.layouts.prospects'), route('admin.prospects.index'));
+});
+
+// Dashboard > Prospects > Create
+Breadcrumbs::for('prospects.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('prospects');
+    $trail->push(trans('admin::app.prospects.create.title'), route('admin.prospects.create'));
+});
+
+// Dashboard > Prospects > Edit
+Breadcrumbs::for('prospects.edit', function (BreadcrumbTrail $trail, $prospect) {
+    $trail->parent('prospects');
+    $trail->push(trans('admin::app.prospects.edit.title'), route('admin.prospects.edit', $prospect->id));
+});

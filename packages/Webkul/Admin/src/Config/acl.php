@@ -586,5 +586,30 @@ return [
         'name' => 'admin::app.acl.help',
         'route' => 'admin.help.index',
         'sort' => 10,
+    ], [
+        'key' => 'prospects',
+        'name' => 'admin::app.acl.prospects',
+        'route' => 'admin.prospects.index',
+        'sort' => 11,
+    ], [
+        'key' => 'prospects.create',
+        'name' => 'admin::app.acl.create',
+        'route' => ['admin.prospects.create', 'admin.prospects.store'],
+        'sort' => 1,
+    ], [
+        'key' => 'prospects.edit',
+        'name' => 'admin::app.acl.edit',
+        'route' => ['admin.prospects.edit', 'admin.prospects.update'],
+        'sort' => 2,
+    ], [
+        'key' => 'prospects.delete',
+        'name' => 'admin::app.acl.delete',
+        'route' => ['admin.prospects.delete', 'admin.prospects.mass_delete'],
+        'sort' => 3,
+    ], [
+        'key' => 'prospects.convert',
+        'name' => 'admin::app.acl.prospects_convert',
+        'route' => 'admin.prospects.contacts.convert',
+        'sort' => 4,
     ],
 ];

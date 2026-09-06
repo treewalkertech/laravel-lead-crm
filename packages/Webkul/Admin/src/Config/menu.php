@@ -298,4 +298,15 @@ return [
         'sort' => 10,
         'icon-class' => 'icon-help',
     ],
+
+    /**
+     * Prospects.
+     */
+    [
+        'key' => 'prospects',
+        'name' => 'admin::app.layouts.prospects',
+        'route' => 'admin.prospects.index',
+        'sort' => 11,
+        'icon-class' => 'icon-contact',
+    ],
 ];

@@ -1,0 +1,21 @@
+{
+    "name": "krayin/laravel-prospect",
+    "license": "MIT",
+    "require": {
+        "krayin/laravel-core": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webkul\\Prospect\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\Prospect\\Providers\\ProspectServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "minimum-stability": "dev"
+}

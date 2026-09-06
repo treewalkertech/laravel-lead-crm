@@ -11,6 +11,7 @@ use Webkul\Email\Providers\ModuleServiceProvider as EmailModuleServiceProvider;
 use Webkul\EmailTemplate\Providers\ModuleServiceProvider as EmailTemplateModuleServiceProvider;
 use Webkul\Lead\Providers\ModuleServiceProvider as LeadModuleServiceProvider;
 use Webkul\Product\Providers\ModuleServiceProvider as ProductModuleServiceProvider;
+use Webkul\Prospect\Providers\ModuleServiceProvider as ProspectModuleServiceProvider;
 use Webkul\Quote\Providers\ModuleServiceProvider as QuoteModuleServiceProvider;
 use Webkul\Tag\Providers\ModuleServiceProvider as TagModuleServiceProvider;
 use Webkul\User\Providers\ModuleServiceProvider as UserModuleServiceProvider;
@@ -30,6 +31,7 @@ return [
         EmailModuleServiceProvider::class,
         LeadModuleServiceProvider::class,
         ProductModuleServiceProvider::class,
+        ProspectModuleServiceProvider::class,
         QuoteModuleServiceProvider::class,
         TagModuleServiceProvider::class,
         UserModuleServiceProvider::class,

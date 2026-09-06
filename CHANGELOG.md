@@ -2,6 +2,10 @@
 
 This changelog consists of the bug & security fixes and new features being included in the releases listed below.
 
+## **v2.2.7 (Upcoming)**
+
+* [feature] Added a Prospects module for tracking raw, unqualified contacts (with per-contact call status and notes) ahead of the main lead pipeline, with a "Convert to Lead" action.
+
 ## **v2.2.6 (19th of Aug 2026)**
 
 * [fixed] Added the missing Chinese translations for the users grid's associated group column.

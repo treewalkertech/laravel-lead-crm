@@ -19,6 +19,7 @@ use Webkul\Installer\Providers\InstallerServiceProvider;
 use Webkul\Lead\Providers\LeadServiceProvider;
 use Webkul\Marketing\Providers\MarketingServiceProvider;
 use Webkul\Product\Providers\ProductServiceProvider;
+use Webkul\Prospect\Providers\ProspectServiceProvider;
 use Webkul\Quote\Providers\QuoteServiceProvider;
 use Webkul\Tag\Providers\TagServiceProvider;
 use Webkul\User\Providers\UserServiceProvider;
@@ -56,6 +57,7 @@ return [
     InstallerServiceProvider::class,
     LeadServiceProvider::class,
     ProductServiceProvider::class,
+    ProspectServiceProvider::class,
     QuoteServiceProvider::class,
     TagServiceProvider::class,
     UserServiceProvider::class,
