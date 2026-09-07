@@ -192,6 +192,20 @@ return [
         'sort' => 3,
         'icon-class' => 'icon-settings-type',
     ], [
+        'key' => 'settings.prospects',
+        'name' => 'admin::app.layouts.prospects',
+        'info' => 'admin::app.layouts.prospects-info',
+        'route' => 'admin.settings.prospect_sources.index',
+        'sort' => 5,
+        'icon-class' => '',
+    ], [
+        'key' => 'settings.prospects.sources',
+        'name' => 'admin::app.layouts.sources',
+        'info' => 'admin::app.layouts.sources-info',
+        'route' => 'admin.settings.prospect_sources.index',
+        'sort' => 1,
+        'icon-class' => 'icon-settings-sources',
+    ], [
         'key' => 'settings.inventory',
         'name' => 'admin::app.layouts.inventory',
         'info' => 'admin::app.layouts.inventory-info',

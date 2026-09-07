@@ -138,6 +138,8 @@ class LeadRepository extends Repository
             $data['expected_close_date'] = null;
         }
 
+        $data['stage_entered_at'] = $data['stage_entered_at'] ?? Carbon::now();
+
         $lead = parent::create(array_merge([
             'lead_pipeline_id' => 1,
             'lead_pipeline_stage_id' => 1,
@@ -198,6 +200,17 @@ class LeadRepository extends Repository
                 $data['closed_at'] = $data['closed_at'] ?? Carbon::now();
             } else {
                 $data['closed_at'] = null;
+            }
+
+            /**
+             * `updated_at` changes on any edit (a tag, a note, an unrelated field), so it can't be
+             * used to compute "days in stage" — only stamp a fresh `stage_entered_at` when the
+             * stage is actually changing.
+             */
+            $currentStageId = $this->find($id, ['lead_pipeline_stage_id'])?->lead_pipeline_stage_id;
+
+            if ((int) $currentStageId !== (int) $data['lead_pipeline_stage_id']) {
+                $data['stage_entered_at'] = Carbon::now();
             }
         }
 

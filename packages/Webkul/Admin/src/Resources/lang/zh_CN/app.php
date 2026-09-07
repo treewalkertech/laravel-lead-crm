@@ -639,6 +639,7 @@ return [
                 'id' => 'ID',
                 'name' => 'Name',
                 'industry' => 'Industry',
+                'source' => 'Source',
                 'contacts-count' => 'Contacts',
                 'created-at' => 'Created At',
                 'edit' => 'Edit',
@@ -650,6 +651,8 @@ return [
             'save-btn' => 'Save Prospect',
             'name' => 'Organization Name',
             'industry' => 'Industry',
+            'source' => 'Source',
+            'source-placeholder' => 'Select a source',
             'contacts-title' => 'Contacts',
             'contacts-info' => 'Add the people you will be reaching out to at this organization.',
             'contact-name' => 'Name',
@@ -864,6 +867,31 @@ return [
                 ],
                 'edit' => [
                     'title' => '编辑来源',
+                ],
+            ],
+        ],
+        'prospect-sources' => [
+            'index' => [
+                'title' => 'Prospect Sources',
+                'create-btn' => 'Create Source',
+                'create-success' => 'Source created successfully.',
+                'delete-failed' => 'Source can not be deleted.',
+                'delete-success' => 'Source deleted successfully.',
+                'update-success' => 'Source updated successfully.',
+                'delete-failed-associated-prospects' => 'Source cannot be deleted because it is associated with existing prospects. Please update those prospects before deletion.',
+                'datagrid' => [
+                    'delete' => 'Delete',
+                    'edit' => 'Edit',
+                    'id' => 'ID',
+                    'name' => 'Name',
+                ],
+                'create' => [
+                    'name' => 'Name',
+                    'save-btn' => 'Save Source',
+                    'title' => 'Create Source',
+                ],
+                'edit' => [
+                    'title' => 'Edit Source',
                 ],
             ],
         ],
@@ -2316,6 +2344,7 @@ return [
         'quotes' => '报价单',
         'quote' => '报价单',
         'prospects' => 'Prospects',
+        'prospects-info' => 'Add, edit or delete prospect sources',
         'mail' => [
             'title' => '邮件',
             'compose' => '写邮件',

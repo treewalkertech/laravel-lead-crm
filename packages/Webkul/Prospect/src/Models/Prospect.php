@@ -18,6 +18,7 @@ class Prospect extends Model implements ProspectContract
     protected $fillable = [
         'name',
         'industry',
+        'prospect_source_id',
         'user_id',
     ];
 
@@ -35,5 +36,13 @@ class Prospect extends Model implements ProspectContract
     public function user(): BelongsTo
     {
         return $this->belongsTo(UserProxy::modelClass());
+    }
+
+    /**
+     * Get the source this prospect came from.
+     */
+    public function source(): BelongsTo
+    {
+        return $this->belongsTo(ProspectSourceProxy::modelClass(), 'prospect_source_id');
     }
 }

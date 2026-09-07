@@ -22,5 +22,8 @@ class LeadServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register() {}
+    public function register()
+    {
+        $this->mergeConfigFrom(dirname(__DIR__).'/Config/lead.php', 'lead');
+    }
 }

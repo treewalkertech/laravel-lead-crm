@@ -22,10 +22,12 @@ class ProspectDataGrid extends DataGrid
     public function prepareQueryBuilder(): Builder
     {
         $queryBuilder = DB::table('prospects')
+            ->leftJoin('prospect_sources', 'prospects.prospect_source_id', '=', 'prospect_sources.id')
             ->addSelect(
                 'prospects.id',
                 'prospects.name',
                 'prospects.industry',
+                'prospect_sources.name as source_name',
                 'prospects.created_at'
             );
 
@@ -69,6 +71,15 @@ class ProspectDataGrid extends DataGrid
             'searchable' => true,
             'sortable' => true,
             'filterable' => true,
+        ]);
+
+        $this->addColumn([
+            'index' => 'source_name',
+            'label' => trans('admin::app.prospects.index.datagrid.source'),
+            'type' => 'string',
+            'searchable' => true,
+            'sortable' => true,
+            'filterable' => false,
         ]);
 
         $this->addColumn([

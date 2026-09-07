@@ -12,6 +12,7 @@ use Webkul\Admin\Http\Controllers\Controller;
 use Webkul\Admin\Http\Requests\MassDestroyRequest;
 use Webkul\Prospect\Models\ProspectContact;
 use Webkul\Prospect\Repositories\ProspectRepository;
+use Webkul\Prospect\Repositories\ProspectSourceRepository;
 
 class ProspectController extends Controller
 {
@@ -20,7 +21,10 @@ class ProspectController extends Controller
      *
      * @return void
      */
-    public function __construct(protected ProspectRepository $prospectRepository) {}
+    public function __construct(
+        protected ProspectRepository $prospectRepository,
+        protected ProspectSourceRepository $prospectSourceRepository
+    ) {}
 
     /**
      * Display a listing of the resource.
@@ -39,7 +43,9 @@ class ProspectController extends Controller
      */
     public function create(): View
     {
-        return view('admin::prospects.create');
+        $sources = $this->prospectSourceRepository->all();
+
+        return view('admin::prospects.create', compact('sources'));
     }
 
     /**
@@ -71,7 +77,9 @@ class ProspectController extends Controller
 
         $this->preventUnauthorizedAccess($prospect->user_id);
 
-        return view('admin::prospects.edit', compact('prospect'));
+        $sources = $this->prospectSourceRepository->all();
+
+        return view('admin::prospects.edit', compact('prospect', 'sources'));
     }
 
     /**
@@ -154,6 +162,7 @@ class ProspectController extends Controller
         request()->validate([
             'name' => 'required|string|max:100',
             'industry' => 'nullable|string|max:100',
+            'prospect_source_id' => 'nullable|exists:prospect_sources,id',
             'contacts' => 'nullable|array',
             'contacts.*.name' => 'nullable|string|max:100',
             'contacts.*.mobile' => 'nullable|string|max:20',

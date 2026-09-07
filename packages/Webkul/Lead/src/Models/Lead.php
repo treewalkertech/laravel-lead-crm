@@ -34,6 +34,7 @@ class Lead extends Model implements LeadContract
         'lost_reason',
         'expected_close_date',
         'closed_at',
+        'stage_entered_at',
         'user_id',
         'person_id',
         'lead_source_id',
@@ -50,6 +51,7 @@ class Lead extends Model implements LeadContract
     protected $casts = [
         'closed_at' => 'datetime:D M d, Y H:i A',
         'expected_close_date' => 'date:D M d, Y',
+        'stage_entered_at' => 'datetime',
     ];
 
     /**
@@ -59,6 +61,7 @@ class Lead extends Model implements LeadContract
      */
     protected $appends = [
         'rotten_days',
+        'days_in_stage',
     ];
 
     /**
@@ -169,5 +172,21 @@ class Lead extends Model implements LeadContract
         $rottenDate = $this->created_at->addDays($this->pipeline->rotten_days);
 
         return $rottenDate->diffInDays(Carbon::now(), false);
+    }
+
+    /**
+     * Returns the number of days this lead has spent in its current stage.
+     */
+    public function getDaysInStageAttribute()
+    {
+        if (
+            ! $this->stage
+            || ! $this->stage_entered_at
+            || in_array($this->stage->code, ['won', 'lost'])
+        ) {
+            return 0;
+        }
+
+        return $this->stage_entered_at->diffInDays(Carbon::now());
     }
 }

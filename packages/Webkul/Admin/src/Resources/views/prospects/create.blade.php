@@ -79,6 +79,30 @@
 
                         <x-admin::form.control-group.error control-name="industry" />
                     </x-admin::form.control-group>
+
+                    <x-admin::form.control-group>
+                        <x-admin::form.control-group.label>
+                            @lang('admin::app.prospects.create.source')
+                        </x-admin::form.control-group.label>
+
+                        <x-admin::form.control-group.control
+                            type="select"
+                            name="prospect_source_id"
+                            id="prospect_source_id"
+                            :label="trans('admin::app.prospects.create.source')"
+                            :value="old('prospect_source_id')"
+                        >
+                            <option value="">@lang('admin::app.prospects.create.source-placeholder')</option>
+
+                            @foreach ($sources as $source)
+                                <option value="{{ $source->id }}">
+                                    {{ $source->name }}
+                                </option>
+                            @endforeach
+                        </x-admin::form.control-group.control>
+
+                        <x-admin::form.control-group.error control-name="prospect_source_id" />
+                    </x-admin::form.control-group>
                 </div>
 
                 {!! view_render_event('admin.prospects.create.form_controls.after') !!}

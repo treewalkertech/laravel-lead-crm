@@ -372,6 +372,31 @@ return [
         'route' => 'admin.settings.types.delete',
         'sort' => 3,
     ], [
+        'key' => 'settings.prospects',
+        'name' => 'admin::app.acl.prospects',
+        'route' => 'admin.settings.prospect_sources.index',
+        'sort' => 5,
+    ], [
+        'key' => 'settings.prospects.sources',
+        'name' => 'admin::app.acl.sources',
+        'route' => 'admin.settings.prospect_sources.index',
+        'sort' => 1,
+    ], [
+        'key' => 'settings.prospects.sources.create',
+        'name' => 'admin::app.acl.create',
+        'route' => ['admin.settings.prospect_sources.store'],
+        'sort' => 1,
+    ], [
+        'key' => 'settings.prospects.sources.edit',
+        'name' => 'admin::app.acl.edit',
+        'route' => ['admin.settings.prospect_sources.edit', 'admin.settings.prospect_sources.update'],
+        'sort' => 2,
+    ], [
+        'key' => 'settings.prospects.sources.delete',
+        'name' => 'admin::app.acl.delete',
+        'route' => 'admin.settings.prospect_sources.delete',
+        'sort' => 3,
+    ], [
         'key' => 'settings.inventory',
         'name' => 'admin::app.acl.inventory',
         'route' => ['admin.settings.warehouses.index'],

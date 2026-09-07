@@ -10,6 +10,7 @@ use Webkul\Admin\Http\Controllers\Settings\LocationController;
 use Webkul\Admin\Http\Controllers\Settings\Marketing\CampaignsController;
 use Webkul\Admin\Http\Controllers\Settings\Marketing\EventController;
 use Webkul\Admin\Http\Controllers\Settings\PipelineController;
+use Webkul\Admin\Http\Controllers\Settings\ProspectSourceController;
 use Webkul\Admin\Http\Controllers\Settings\RoleController;
 use Webkul\Admin\Http\Controllers\Settings\SettingController;
 use Webkul\Admin\Http\Controllers\Settings\SourceController;
@@ -219,6 +220,21 @@ Route::prefix('settings')->group(function () {
         Route::put('edit/{id}', 'update')->name('admin.settings.sources.update');
 
         Route::delete('{id}', 'destroy')->name('admin.settings.sources.delete');
+    });
+
+    /**
+     * Prospect Sources Routes.
+     */
+    Route::controller(ProspectSourceController::class)->prefix('prospect-sources')->group(function () {
+        Route::get('', 'index')->name('admin.settings.prospect_sources.index');
+
+        Route::post('create', 'store')->name('admin.settings.prospect_sources.store');
+
+        Route::get('edit/{id?}', 'edit')->name('admin.settings.prospect_sources.edit');
+
+        Route::put('edit/{id}', 'update')->name('admin.settings.prospect_sources.update');
+
+        Route::delete('{id}', 'destroy')->name('admin.settings.prospect_sources.delete');
     });
 
     /**

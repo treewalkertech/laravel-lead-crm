@@ -145,18 +145,31 @@
                                             </div>
                                         </div>
 
-                                        <div
-                                            class="group relative"
-                                            v-if="element.rotten_days > 0"
-                                        >
-                                            <span class="icon-rotten cursor-default text-xl text-rose-600"></span>
+                                        <div class="flex items-center gap-1">
+                                            <span
+                                                v-if="element.days_in_stage > 0"
+                                                class="whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-medium"
+                                                :class="element.days_in_stage >= stageRotDays
+                                                    ? 'bg-red-100 text-red-600 dark:bg-red-950'
+                                                    : 'bg-green-100 text-green-600 dark:bg-green-950'"
+                                                :title="`${element.days_in_stage} day(s) in this stage`"
+                                            >
+                                                @{{ element.days_in_stage }}d
+                                            </span>
 
-                                            <div class="absolute -top-1 right-7 hidden w-max flex-col items-center group-hover:flex">
-                                                <span class="whitespace-no-wrap relative rounded-md bg-black px-4 py-2 text-xs leading-none text-white shadow-lg">
-                                                    @{{ "@lang('admin::app.leads.index.kanban.rotten-days', ['days' => 'replaceDays'])".replace('replaceDays', element.rotten_days) }}
-                                                </span>
+                                            <div
+                                                class="group relative"
+                                                v-if="element.rotten_days > 0"
+                                            >
+                                                <span class="icon-rotten cursor-default text-xl text-rose-600"></span>
 
-                                                <div class="absolute -right-1 top-2 h-3 w-3 rotate-45 bg-black"></div>
+                                                <div class="absolute -top-1 right-7 hidden w-max flex-col items-center group-hover:flex">
+                                                    <span class="whitespace-no-wrap relative rounded-md bg-black px-4 py-2 text-xs leading-none text-white shadow-lg">
+                                                        @{{ "@lang('admin::app.leads.index.kanban.rotten-days', ['days' => 'replaceDays'])".replace('replaceDays', element.rotten_days) }}
+                                                    </span>
+
+                                                    <div class="absolute -right-1 top-2 h-3 w-3 rotate-45 bg-black"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -342,6 +355,8 @@
                     stages: @json($pipeline->stages->toArray()),
 
                     stageLeads: {},
+
+                    stageRotDays: {{ (int) config('lead.stage_rot_days') }},
 
                     isLoading: true,
 

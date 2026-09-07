@@ -260,6 +260,12 @@ Breadcrumbs::for('settings.sources.edit', function (BreadcrumbTrail $trail, $sou
     $trail->push(trans('admin::app.settings.sources.edit-title'), route('admin.settings.sources.edit', $source->id));
 });
 
+// Settings > Prospect Sources
+Breadcrumbs::for('settings.prospect_sources', function (BreadcrumbTrail $trail) {
+    $trail->parent('settings');
+    $trail->push(menu()->getLabel('settings.prospects.sources', 'admin::app.layouts.sources'), route('admin.settings.prospect_sources.index'));
+});
+
 // Settings > Types
 Breadcrumbs::for('settings.types', function (BreadcrumbTrail $trail) {
     $trail->parent('settings');
